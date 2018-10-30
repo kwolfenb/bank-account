@@ -40,7 +40,6 @@ AccountBook.prototype.deleteAccount = function(id) {
 // Business Logic for Contacts ---------
 function BankAccount(name, initialDeposit) {
   this.name = name,
-  this.initialDeposit = initialDeposit,
   this.currentBalance = initialDeposit
 }
 
@@ -77,18 +76,19 @@ $(document).ready(function() {
     var inputtedDepositAmount = parseInt($("input#new-deposit-amount").val());
     var inputtedWithdrawalAmount = parseInt($("input#new-withdrawal-amount").val());
     var currentBalance = "";
-    // $("input#new-name").val("");
-    // $("input#new-initial-deposit").val("");
-    // $("input#new-deposit-amount").val("");
-    // $("input#new-withdrawal-amount").val("");
+    $("input#new-name").val("");
+    $("input#new-initial-deposit").val("");
+    $("input#new-deposit-amount").val("");
+    $("input#new-withdrawal-amount").val("");
 
     var newbankAccount = new BankAccount(inputtedName, inputtedInitialDeposit);
     console.log(newbankAccount);
     // var newdepositOrWithdraw = new DepositOrWithdraw(inputtedDepositAmount, inputtedWithdrawalAmount);
     accountBook.addAccount(newbankAccount);
     $("#show-balance").show();
-    $(".current-balance").text(newbankAccount.initialDeposit);
+    $(".current-balance").text(newbankAccount.currentBalance);
     $(".account-number").text(newbankAccount.id);
+    $("#name").text(inputtedName);
 
   })
 
@@ -105,7 +105,14 @@ $(document).ready(function() {
   }else{
     currentAccount.withdrawal(inputtedDepositOrWithdrawalAmount);
     $(".current-balance").text(currentAccount.currentBalance);
+    if(currentAccount.currentBalance<0){
+      alert("Insufficient Funds to withdraw");
+    }
+
   }
+  $("#name").text(currentAccount.name);
+  $(".account-number").text(currentAccount.id);
+  $("#congratulations").hide();
 
 });
 })

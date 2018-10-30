@@ -10,10 +10,9 @@
   </head>
   <body>
     <div class="container">
-      <h1>Bank Account</h1>
+      <h1>Epicodus Credit Union</h1><br>
       <div class="row">
         <div class="col-md-6">
-          <hr>
           <h2>Register a new account:</h2>
           <form id="new-account">
             <div class="form-group">
@@ -27,7 +26,7 @@
             <button type="submit" class="btn-primary">Create Account</button>
           </form>
         </div>
-        <div class="col-md-6"><br>
+        <div class="col-md-6">
           <h2>Deposit or Withdraw funds:</h2>
           <form id="deposit-withdrawal">
             <div class="form-group">
@@ -42,11 +41,12 @@
             <button type="submit" class="btn-primary">Submit</button>
           </form>
         </div><br><br>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div id="show-balance">
-            <h5>Congratulations on opening a new account!</h5>
-            <p>Account Number: <span class="account-number"></span></p>
-            <p>Current Balance: <span class="current-balance"></span></p>
+            <h5>Hi <span id = "name"></span>, </h5>
+              <h5 id="congratulations">Congratulations on opening a new account!</h5>
+            <p>Here is your Account Number: <span class="account-number"></span></p>
+            <p>Current Balance: $<span class="current-balance"></span></p>
           </div>
         </div>
       </div>
